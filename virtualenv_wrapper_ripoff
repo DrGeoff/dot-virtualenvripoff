@@ -1,0 +1,31 @@
+#
+# A virtualenvwrapper ripoff
+#
+WORKON_HOME=$HOME/venvs
+workon()
+{
+    source ${WORKON_HOME}/$1/bin/activate
+}
+
+# Show what virtual environments already exist
+venvs()
+{
+    ls ${WORKON_HOME}
+}
+
+# Make my usual virtual env (python3, no site packages)
+mkvenv()
+{
+    python3 -m venv ${WORKON_HOME}/${1}
+    #virtualenv-3 $1 --no-site-packages --python=python3
+    workon $1
+}
+
+# Sometimes we have to use python2
+mkvenv2()
+{
+    pushd ${WORKON_HOME} >/dev/null
+    virtualenv-2 $1 --no-site-packages --python=python2
+    workon $1
+    popd >/dev/null
+}
