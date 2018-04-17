@@ -29,3 +29,18 @@ mkvenv2()
     workon $1
     popd >/dev/null
 }
+
+# And similarly for pypy
+mkvenv-pypy()
+{
+    pypy3 -m venv ${WORKON_HOME}/${1}
+    workon $1
+}
+
+mkvenv-pypy2()
+{
+    pushd ${WORKON_HOME} >/dev/null
+    virtualenv-2 $1 --no-site-packages --python=pypy
+    workon $1
+    popd >/dev/null
+}
