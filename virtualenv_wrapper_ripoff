@@ -48,3 +48,11 @@ mkvenv-pypy2()
     workon $1
     popd >/dev/null
 }
+
+# And similarly for micropython
+mkvenv-micropython()
+{
+    mkdir -p ${WORKON_HOME}
+    micropython -m venv ${WORKON_HOME}/${1}
+    workon $1
+}
