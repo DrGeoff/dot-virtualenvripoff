@@ -13,13 +13,13 @@ venvs()
     ls ${WORKON_HOME}
 }
 
-# Make my usual virtual env (python3, no site packages)
+# Make my usual virtual env 
 mkvenv()
 {
     mkdir -p ${WORKON_HOME}
-    python3 -m venv ${WORKON_HOME}/${1}
-    #virtualenv-3 $1 --no-site-packages --python=python3
+    python3 -m venv --upgrade-deps --copies ${WORKON_HOME}/${1}
     workon $1
+    python3 -m pip install --upgrade wheel
 }
 
 # Sometimes we have to use python2
